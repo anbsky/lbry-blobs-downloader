@@ -48,6 +48,6 @@ INFO[0000] QUIC protocol downloaded at an average of 36.13 MiB/s
 ```
 
 # As a library
-`go get https://github.com/nikooo777/lbry-blobs-downloader.git`
+`go get github.com/nikooo777/lbry-blobs-downloader`
 
 Then see [example](example/example.go)
