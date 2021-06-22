@@ -1,6 +1,6 @@
 module github.com/nikooo777/lbry-blobs-downloader
 
-go 1.14
+go 1.15
 
 require (
 	github.com/lbryio/lbry.go/v2 v2.7.2-0.20210416195322-6516df1418e3
