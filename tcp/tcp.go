@@ -24,7 +24,7 @@ func DownloadBlob(hash string) (*stream.Blob, error) {
 		return nil, errors.Err(err)
 	}
 	elapsed := time.Since(start)
-	logrus.Infof("[T] download time: %d ms\tSpeed: %.2f MB/s", elapsed.Milliseconds(), (float64(len(blob))/(1024*1024))/elapsed.Seconds())
+	logrus.Debugf("[T] download time: %d ms\tSpeed: %.2f MB/s", elapsed.Milliseconds(), (float64(len(blob))/(1024*1024))/elapsed.Seconds())
 	err = os.MkdirAll("./downloads", os.ModePerm)
 	if err != nil {
 		return nil, errors.Err(err)
@@ -34,7 +34,7 @@ func DownloadBlob(hash string) (*stream.Blob, error) {
 		return nil, errors.Err(err)
 	}
 	elapsed = time.Since(start) - elapsed
-	//logrus.Infof("save time: %d us\tSpeed: %.2f MB/s", elapsed.Microseconds(), (float64(len(blob))/(1024*1024))/elapsed.Seconds())
+	//logrus.Debugf("save time: %d us\tSpeed: %.2f MB/s", elapsed.Microseconds(), (float64(len(blob))/(1024*1024))/elapsed.Seconds())
 	return &blob, nil
 }
 
@@ -52,7 +52,7 @@ func DownloadStream(blob *stream.SDBlob) float64 {
 	totalSize := 0
 	milliseconds := int64(0)
 	for _, hash := range hashes {
-		logrus.Info(hash)
+		logrus.Debug(hash)
 		begin := time.Now()
 		b, err := DownloadBlob(hash)
 		milliseconds += time.Since(begin).Milliseconds()
